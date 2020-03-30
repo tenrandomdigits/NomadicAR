@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
 <!-- include A-Frame obviously -->
-<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <!-- include ar.js for A-Frame -->
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene stats embedded arjs='trackingMethod: best; debugUIEnabled: false'>
-    <!-- create your content here. just a box for now -->
-    <!-- define your gltf asset -->
-<a-assets>
-    <a-asset-item id="case" src="NomadicAR_GLTF.glb">
-      </a-asset-item>
-   <!-- <a-asset-item id="case-obj" src="NomadicReduction2.obj"></a-asset-item>-->
-  </a-assets>
-  <!-- use your gltf model -->
- <a-entity gltf-model="#case"></a-entity>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+ <body style="margin : 0px; overflow: hidden;">
+  <a-scene stats embedded 
+  arjs='trackingMethod: best; debugUIEnabled: false'
+  inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
+<!-- create your content here. just a box for now -->
+<!-- define your gltf asset -->
+     <a-assets>
+       <a-asset-item id="case" src="NomadicAR_GLTF.glb"></a-asset-item>
+     </a-assets>
+<!-- use your gltf model -->
+     <a-entity 
+      position="0 0 0"
+      scale= "1 1 1"
+      gltf-model="#case">
+     </a-entity>
   <!--<a-entity obj-model="obj: #case-obj"></a-entity>-->
 
-    <!-- define a camera which will move according to the marker position -->
-    <a-marker-camera preset='hiro'></a-marker-camera>
+<!-- define a camera which will move according to the marker position -->
+    <a-marker preset='hiro'></a-marker>
   </a-scene>
-  This is the latest
+  Please accept to view AR
 
-</body>
+ </body>
 </html>
