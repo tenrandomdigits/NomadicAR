@@ -15,16 +15,16 @@
      </a-assets>
 <!-- use your gltf model -->
      <a-entity 
-      position="0 0 0"
-      rotation="0 0 0"
-      scale= "1.5 1.5 1.5"
+      position="0 1.5 0"
+      rotation="90 0 0"
+      scale= "2 2 2"
       gltf-model="#case">
      </a-entity>
   <!--<a-entity obj-model="obj: #case-obj"></a-entity>-->
 
 <!-- define a camera which will move according to the marker position -->
-    <a-marker preset='hiro'></a-marker>
-    <a-entity camera></a-entity>
+    <a-marker-camera preset='hiro'></a-marker-camera>
+
   </a-scene>
   <p>Press allow to begin AR!</p>
 
