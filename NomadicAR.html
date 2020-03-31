@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Nomadic Hardgoods">
+    <meta name="author" content="Haas Weston">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">">
+</head> 
 <!-- include A-Frame obviously -->
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <!-- include ar.js for A-Frame -->
@@ -11,7 +17,7 @@
 <!-- create your content here. just a box for now -->
 <!-- define your gltf asset -->
      <a-assets>
-       <a-asset-item id="case" src="NomadicAR_GLTF.glb"></a-asset-item>
+       <a-asset-item id="case" src="NomadicAR_GLTF_2.glb"></a-asset-item>
      </a-assets>
 <!-- use your gltf model -->
      <a-entity 
@@ -20,6 +26,14 @@
       scale= "2 2 2"
       gltf-model="#case">
      </a-entity>
+    <!-- Red directional light shining from the top left. -->
+    <a-light color="white" position="1.21438 2.01443 0.44292" light=""></a-light>
+
+<!-- Blue point light, 5 meters in the air. -->
+<a-light type="point" color="white" position="0.84419 1.65427 1.8459" light="intensity: 2"></a-light>
+
+<!-- Dim ambient lighting. -->
+<a-light type="ambient" color="#222"></a-light>
   <!--<a-entity obj-model="obj: #case-obj"></a-entity>-->
 
 <!-- define a camera which will move according to the marker position -->
