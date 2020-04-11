@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="description" content="Nomadic Hardgoods">
     <meta name="author" content="Haas Weston">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head> 
+
 <!-- include A-Frame obviously -->
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <!-- include ar.js for A-Frame -->
@@ -16,36 +17,52 @@
  <body style="margin : 0px; overflow: hidden;">
  <!--iOS-->
 
-  <a rel="ar" href="Experience.reality"> <img src="NomadicLogo.png" alt=""></a>
+ <script language=javascript>
 
-  <a-scene stats embedded 
+  if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
+     location.replace("ios-ar.html");
+  }
+
+  </script>
+
+  <a-scene 
+  stats 
+  embedded
+
+
   arjs='trackingMethod: best; debugUIEnabled: false'
   inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
-<!-- create content here -->
+
 <!-- define gltf asset -->
-     <a-assets>
-       <a-asset-item id="case" src="NomadicAR_GLTF_2.glb"></a-asset-item>
-     </a-assets>
+<a-assets>
+  <a-asset-item id="case" src="NomadicAR_GLTF_3.glb"></a-asset-item>
+</a-assets>
+
+  <!-- a-nft is the anchor that defines an Image Tracking entity -->
+  <!-- on 'url' use the path to the Image Descriptors created before. -->
+  <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+  <a-nft
+  type="nft"
+  url="/Marker-IDs/qr-code"
+  smooth="true"
+  smoothCount="10"
+  smoothTolerance=".01"
+  smoothThreshold="5">
+
+<!-- create content here -->
+
 <!-- use gltf model -->
      <a-entity 
+     gltf-model="#case"
       position="0 0 0"
       rotation="0 0 0"
       scale= "2 2 2"
-      gltf-model="#case">
+      shadow="cast: true;">
      </a-entity>
-    <!-- White directional light shining from the top left. -->
-    <a-light color="white" position="1.21438 2.01443 0.44292" light=""></a-light>
 
-<!-- White point light, 5 meters in the air. -->
-<a-light type="point" color="white" position="0.84419 1.65427 1.8459" light="intensity: 2"></a-light>
-
-<!-- Dim ambient lighting. -->
-<a-light type="ambient" color="#222"></a-light>
-
+</a-nft>
 <!-- define a camera which will move according to the marker position -->
-    <a-marker-camera type='pattern' patternUrl='pattern-qr-code.patt'
-    position="0 0 0"
-    rotation="0 90 0"></a-marker-camera>
+<a-marker-camera preset='custom' url='pattern-qr-code.patt'>...</a-marker-camera>
 
   </a-scene>
 
